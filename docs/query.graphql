@@ -1,0 +1,308 @@
+
+  jobSearchV7(params: $params) {
+      results {
+        jobs {
+          id
+          title
+          abstract
+          adDisplay
+          advertiser {
+            id
+            name
+          }
+          organisation {
+            id
+            name
+            companyProfileId
+            companyProfileUrl
+            companyProfileRelativeUrlToBeUsedWithZone
+          }
+          categories {
+            id
+            label(locale: $locale)
+          }
+          location {
+            id
+            countryCode
+            displayName {
+              text
+            }
+            seoHierarchy {
+              contextualName {
+                text
+              }
+            }
+          }
+          cjs {
+            workTypes {
+              sourceId
+              name(locale: $locale)
+            }
+            source {
+              isAutoIncluded
+            }
+            salary {
+              hideSalary
+              minimum
+              maximum
+              currency
+              period
+              displayValue
+            }
+            roleTitles {
+              shortId
+              isDistinct
+            }
+            product {
+              branding {
+                companyLogoURL
+              }
+              bullets
+              adType {
+                sourceId
+              }
+            }
+            externalReferences {
+              id
+              sourceSystem
+              type
+              metadata {
+                name
+                assets {
+                  profilePhotoUrl
+                }
+              }
+            }
+          }
+          listedAt {
+            dateTimeUtc
+            label(
+              context: JOB_POSTED
+              length: SHORT
+              timezone: $timezone
+              locale: $locale
+            )
+          }
+          salary {
+            period
+            min
+            max
+            currency
+          }
+          sol
+          tags(subType: $tagsSubType) {
+            type
+            label(locale: $locale)
+          }
+          url
+          workArrangements {
+            id
+            label {
+              lang
+              text
+            }
+          }
+          activity {
+            visitedApplicationSite {
+              count
+              mostRecent {
+                dateTimeUtc
+              }
+            }
+            applicationEnds {
+              count
+              mostRecent {
+                dateTimeUtc
+              }
+            }
+            applicationStarts {
+              count
+              mostRecent {
+                dateTimeUtc
+              }
+            }
+            impressions {
+              count
+              mostRecent {
+                dateTimeUtc
+              }
+            }
+            jobDetails {
+              count
+              mostRecent {
+                dateTimeUtc
+              }
+            }
+          }
+        }
+        pagination {
+          page
+          pageSize
+          resultCount
+        }
+      }
+      enrichment {
+        facets {
+          categoryV1 {
+            id
+            label {
+              lang
+              text
+            }
+            count
+          }
+          distinctTitleV1 {
+            id
+            label
+            count
+          }
+        }
+        suggestions {
+          queryParamLabelsV1 {
+            text
+            where {
+              id
+              kind
+              label {
+                lang
+                text
+              }
+              contextualName {
+                lang
+                text
+              }
+              contextualNameLocalisations(siteKey: $country) {
+                lang
+                text
+              }
+              isGranular
+              defaultDistanceKms
+            }
+            locationsHierarchy {
+              id
+              kind
+              label {
+                lang
+                text
+              }
+              contextualName {
+                lang
+                text
+              }
+              isGranular
+              defaultDistanceKms
+            }
+          }
+          relatedSearchesV1 {
+            totalJobs
+            text
+          }
+          organisationV1 {
+            organisationId
+            organisationName
+            totalJobs
+          }
+          locationV1 {
+            local {
+              sequence
+              completions {
+                id
+                label(
+                  locale: $locale
+                  zone: $zone
+                  context: CONTEXTUAL_NAME
+                  labelType: SHORT
+                )
+              }
+            }
+            international {
+              sequence
+              completions {
+                id
+                label(
+                  locale: $locale
+                  zone: $zone
+                  context: CONTEXTUAL_NAME
+                  labelType: SHORT
+                )
+              }
+            }
+          }
+          sabFilterV1 {
+            showSABFilter
+          }
+          canonicalV1 {
+            text
+            where {
+              id
+              name
+            }
+          }
+          spellingCorrectionV1 {
+            type
+            count
+            searchToken
+            label {
+              lang
+              defaultText
+            }
+            intent {
+              country
+              locale
+              text
+              where
+              whereId
+              sort
+              distanceKms
+              filter {
+                advertiserId
+                categoryId
+                listedAt
+                organisationId
+                organisationName
+                salaryMin
+                salaryMax
+                tags
+                workTypeId
+                workArrangementId
+              }
+            }
+          }
+        }
+      }
+      context {
+        searchToken
+        filterNewSince
+        representations {
+          uiV1 {
+            country
+            locale
+            text
+            where
+            whereId
+            sort
+            distanceKms
+            filter {
+              advertiserId
+              categoryId
+              categoryName
+              listedAt
+              organisationId
+              organisationName
+              salaryMin
+              salaryMax
+              tags
+              workTypeId
+              workArrangementId
+            }
+          }
+        }
+      }
+      metadata {
+        flight
+        request {
+          correlationId
+        }
+        sol
+      }
+    }
